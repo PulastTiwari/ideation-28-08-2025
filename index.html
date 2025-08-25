@@ -69,6 +69,206 @@
             <h1 id="projectName" class="text-4xl md:text-5xl font-bold text-gray-800">AI Network Analyst</h1>
             <p id="hackathonName" class="mt-2 text-lg md:text-xl text-gray-500">Samsung EnnovateX 2025 AI Challenge Submission</p>
         </header>
+
+        <div class="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+            <!-- Navigation Tabs -->
+            <nav class="border-b border-gray-200 mb-6">
+                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="tab-navigation">
+                    <li><a href="#" class="inline-block p-4 border-b-2 rounded-t-lg tab-active" data-tab="vision">Project Vision</a></li>
+                    <li><a href="#" class="inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="idea">Core Idea</a></li>
+                    <li><a href="#" class="inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="architecture">System Architecture</a></li>
+                    <li><a href="#" class="inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="research">R&D Process</a></li>
+                </ul>
+            </nav>
+
+            <!-- Content Sections -->
+            <div id="tab-content">
+                <!-- Project Vision Section -->
+                <section id="vision" class="content-section active">
+                     <div class="text-left mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Project Vision</h2>
+                        <p class="text-gray-600">This section outlines the primary challenge we are addressing and the high-level goal of our project. We aim to transform how network traffic is analyzed by moving beyond traditional methods to a more intelligent, reasoning-based approach.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                            <h3 class="font-bold text-xl text-gray-700 mb-3 flex items-center">
+                                <span class="text-2xl mr-3">🎯</span> The Problem
+                            </h3>
+                            <p id="problemTitle" class="text-lg font-semibold text-gray-800"></p>
+                            <p id="problemDescription" class="text-gray-600 mt-2"></p>
+                        </div>
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                            <h3 class="font-bold text-xl text-gray-700 mb-3 flex items-center">
+                                <span class="text-2xl mr-3">💡</span> Our Goal
+                            </h3>
+                            <p id="goalDescription" class="text-gray-600"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Core Idea Section -->
+                <section id="idea" class="content-section">
+                    <div class="text-left mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">The Core Idea: LLM-Powered Reasoning</h2>
+                        <p class="text-gray-600">Our innovation lies in leveraging a Large Language Model (LLM) for classification. Instead of training a model on numerical data, we convert traffic statistics into a human-readable prompt, allowing the LLM to perform a reasoning-based analysis. This approach is more flexible and interpretable than traditional models.</p>
+                    </div>
+                    <div id="llm-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 p-4">
+                        <div class="workflow-step text-center p-4 border-2 border-gray-200 rounded-lg transition-all duration-300 w-full md:w-1/4">
+                            <div class="text-4xl mb-2">1️⃣</div>
+                            <h4 class="font-semibold">Capture & Feature Extraction</h4>
+                            <p class="text-sm text-gray-500">Numerical data (packet length, duration) is extracted from traffic.</p>
+                        </div>
+                        <div class="text-2xl text-gray-400 font-mono">&gt;&gt;</div>
+                        <div class="workflow-step text-center p-4 border-2 border-gray-200 rounded-lg transition-all duration-300 w-full md:w-1/4">
+                            <div class="text-4xl mb-2">2️⃣</div>
+                            <h4 class="font-semibold">Prompt Generation</h4>
+                            <p class="text-sm text-gray-500">Data is converted into a descriptive text prompt for the LLM.</p>
+                        </div>
+                        <div class="text-2xl text-gray-400 font-mono">&gt;&gt;</div>
+                        <div class="workflow-step text-center p-4 border-2 border-gray-200 rounded-lg transition-all duration-300 w-full md:w-1/4">
+                            <div class="text-4xl mb-2">3️⃣</div>
+                            <h4 class="font-semibold">LLM Reasoning</h4>
+                            <p class="text-sm text-gray-500">The LLM analyzes the prompt and classifies the traffic type.</p>
+                        </div>
+                         <div class="text-2xl text-gray-400 font-mono">&gt;&gt;</div>
+                        <div class="workflow-step text-center p-4 border-2 border-gray-200 rounded-lg transition-all duration-300 w-full md:w-1/4">
+                            <div class="text-4xl mb-2">4️⃣</div>
+                            <h4 class="font-semibold">QoS Enforcement</h4>
+                            <p class="text-sm text-gray-500">The classification result is used to apply dynamic QoS rules.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- System Architecture Section -->
+                <section id="architecture" class="content-section">
+                    <div class="text-left mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">System Architecture & Tech Stack</h2>
+                        <p class="text-gray-600">Our system is built on a modern, robust technology stack, separating concerns between a responsive frontend, a high-performance backend, and a powerful open-source AI model. This architecture ensures scalability and a smooth user experience.</p>
+                    </div>
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <div id="frontend-stack" class="bg-amber-50 rounded-xl p-6 border border-amber-200"></div>
+                        <div id="backend-stack" class="bg-sky-50 rounded-xl p-6 border border-sky-200"></div>
+                        <div id="ai-stack" class="bg-purple-50 rounded-xl p-6 border border-purple-200"></div>
+                    </div>
+                </section>
+
+                <!-- Research & Development Section -->
+                <section id="research" class="content-section">
+                     <div class="text-left mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Research & Development Process</h2>
+                        <p class="text-gray-600">Our solution is grounded in thorough research across key technical domains. This chart illustrates the areas we investigated to build a robust and well-founded project. Each area involved exploring specific queries to master the necessary techniques and technologies.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="researchChart"></canvas>
+                    </div>
+                    <div id="research-details" class="mt-6 grid md:grid-cols-2 gap-4"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const jsonData = {
+          "projectName": "AI Network Analyst",
+          "hackathon": "Samsung EnnovateX 2025 AI Challenge",
+          "problemStatement": {
+            "id": 8,
+            "title": "Classify User Application Traffic at the Network",
+            "coreGoal": "Analyze network traffic patterns to categorize them into application types (Video Streaming, Gaming, Calls, etc.) to enable dynamic Quality of Service (QoS)."
+          },
+          "coreIdea": "Utilize a Large Language Model (LLM) to perform a 'reasoning-based' classification of network traffic. This involves converting numerical traffic features into a descriptive text prompt, which is more novel and flexible than traditional machine learning models.",
+          "techStack": {
+            "frontend": {
+              "framework": "Next.js (App Router)",
+              "language": "TypeScript",
+              "ui": [ "Shadcn UI", "Radix UI" ],
+              "styling": "Tailwind CSS",
+              "deployment": "Vercel"
+            },
+            "backend": {
+              "framework": "FastAPI",
+              "language": "Python",
+              "deployment": [ "Hugging Face Spaces", "Render.com" ]
+            },
+            "ai": {
+              "modelType": "Open-Source LLM",
+              "suggestedModels": [ "Mistral 7B", "Llama 3 8B" ],
+              "inferenceEngine": "Ollama (for local development)"
+            }
+          },
+          "researchAreas": [
+            {
+              "area": "Network Traffic Analysis",
+              "goal": "Understand the fundamental features used for classifying application traffic.",
+              "queries": [
+                "key features for network traffic classification",
+                "interpreting flow duration and packet length for QoS",
+                "what is inter-arrival time in network packets"
+              ]
+            },
+            {
+              "area": "LLM for Tabular Data",
+              "goal": "Master the technique of prompting an LLM with numerical data for classification.",
+              "queries": [
+                "using LLMs for tabular data classification",
+                "prompt engineering for numerical data analysis",
+                "ollama api python client example",
+                "langchain with local ollama for classification task",
+                "how to get structured JSON output from Mistral 7B"
+              ]
+            },
+            {
+              "area": "Backend Development",
+              "goal": "Build and containerize the Python API efficiently.",
+              "queries": [
+                "fastapi python tutorial for machine learning api",
+                "dockerize fastapi application",
+                "fastapi async requests httpx",
+                "deploy python fastapi to hugging face spaces docker"
+              ]
+            },
+            {
+              "area": "Frontend Development",
+              "goal": "Implement the user interface and API integration according to best practices.",
+              "queries": [
+                "next js 14 server actions for api calls",
+                "react parse csv file in browser papaparse",
+                "shadcn ui data table implementation",
+                "shadcn ui file upload component",
+                "managing loading and error states in next.js server components"
+              ]
+            }
+          ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            populateContent(jsonData);
+            setupTabs();
+            setupWorkflowAnimation();
+            renderResearchChart(jsonData.researchAreas);
+        });
+
+        function populateContent(data) {
+            document.getElementById('projectName').textContent = data.projectName;
+            document.getElementById('hackathonName').textContent = `${data.hackathon} Submission`;
+            
+            // Vision Section
+            document.getElementById('problemTitle').textContent = `Problem #${data.problemStatement.id}: ${data.problemStatement.title}`;
+            document.getElementById('problemDescription').textContent = data.problemStatement.coreGoal;
+            document.getElementById('goalDescription').textContent = data.coreIdea;
+
+            // Architecture Section
+            const { frontend, backend, ai } = data.techStack;
+            document.getElementById('frontend-stack').innerHTML = createStackCardHTML('Frontend', frontend, 'amber');
+            document.getElementById('backend-stack').innerHTML = createStackCardHTML('Backend', backend, 'sky');
+            document.getElementById('ai-stack').innerHTML = createStackCardHTML('Artificial Intelligence', ai, 'purple');
+
+            // Research Details
+            const researchDetailsContainer = document.getElementById('research-details');
+            data.researchAreas.forEach(area => {
+                const areaEl = document.createElement('div');
+                areaEl.className = 'bg-gray-50 p-4 rounded-lg border';
+                areaEl.innerHTML = `
                     <h4 class="font-semibold text-gray-800">${area.area}</h4>
                     <p class="text-sm text-gray-600 mt-1 mb-2">${area.goal}</p>
                     <ul class="list-disc list-inside text-xs text-gray-500 space-y-1">
