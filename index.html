@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Network Analyst | EnnovateX 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Neutral Harmony" - A calming and professional palette using beige, slate, and subtle amber accents to create a focused and sophisticated user experience. -->
+    <!-- Application Structure Plan: The SPA is designed as a narrative journey, guiding the user (judges) through the project logically. It starts with a high-level 'Project Vision' (the what and why), moves to the 'Core Idea' (the how), details the 'System Architecture' (the components), visualizes the 'Research & Development' process (the foundation), and ends with a clear 'Project Goals' summary. This thematic, top-down structure is more persuasive and easier to digest than mirroring the raw JSON, ensuring the project's strengths and novelty are clearly communicated. Key interactions include tabbed navigation for a clean, single-page feel, and hover effects on diagrams to reveal details, encouraging exploration. -->
+    <!-- Visualization & Content Choices: 
+        - Project Vision (Goal: Inform): Presented with clear, concise text cards and icons (Unicode) for quick comprehension of the problem and goal.
+        - Core Idea (Goal: Explain): Uses a dynamic, multi-step flowchart built with HTML/Tailwind to visualize the innovative LLM reasoning process. JavaScript highlights the active step, making the complex workflow intuitive.
+        - System Architecture (Goal: Organize): Tech stack is shown in categorized cards. A central diagram (HTML/Tailwind) shows the interaction between Frontend, Backend, and AI. This is more engaging than a simple list.
+        - Research & Development (Goal: Compare/Inform): A horizontal bar chart (Chart.js) visualizes the distribution of research effort across different domains (e.g., LLM, Backend). This provides a quick, data-driven insight into the project's technical depth. Interaction: Clicking a bar could filter/show the specific queries.
+        - Project Goals (Goal: Inform): A checklist-style layout (HTML/Tailwind) makes the goals easily scannable and reinforces the project's well-defined objectives.
+        - Justification: This structure tells a compelling story, highlighting the novelty (LLM reasoning) and technical rigor (structured research, clear architecture). All visuals are built with standard, allowed libraries, ensuring full compliance.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* Warm Beige */
+            color: #4A4A4A; /* Dark Slate Gray */
+        }
+        .tab-active {
+            border-bottom-color: #D97706; /* Amber Accent */
+            color: #D97706;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            border-bottom-color: transparent;
+            color: #6B7280;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .step-highlight {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.2), 0 4px 6px -2px rgba(217, 119, 6, 0.1);
+            border-color: #D97706;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <header class="text-center mb-10 md:mb-16">
+            <h1 id="projectName" class="text-4xl md:text-5xl font-bold text-gray-800">AI Network Analyst</h1>
+            <p id="hackathonName" class="mt-2 text-lg md:text-xl text-gray-500">Samsung EnnovateX 2025 AI Challenge Submission</p>
+        </header>
+                    <h4 class="font-semibold text-gray-800">${area.area}</h4>
+                    <p class="text-sm text-gray-600 mt-1 mb-2">${area.goal}</p>
+                    <ul class="list-disc list-inside text-xs text-gray-500 space-y-1">
+                        ${area.queries.map(q => `<li>${q}</li>`).join('')}
+                    </ul>
+                `;
+                researchDetailsContainer.appendChild(areaEl);
+            });
+        }
+
+        function createStackCardHTML(title, stack, color) {
+            let content = `<h3 class="font-bold text-xl text-gray-700 mb-4">${title}</h3><div class="space-y-3">`;
+            for (const [key, value] of Object.entries(stack)) {
+                const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                const formattedValue = Array.isArray(value) ? value.join(', ') : value;
+                content += `
+                    <div class="flex justify-between text-sm">
+                        <span class="font-medium text-gray-500">${formattedKey}:</span>
+                        <span class="font-semibold text-${color}-800 text-right">${formattedValue}</span>
+                    </div>
+                `;
+            }
+            content += `</div>`;
+            return content;
+        }
+
+        function setupTabs() {
+            const tabs = document.querySelectorAll('#tab-navigation a');
+            const sections = document.querySelectorAll('#tab-content .content-section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('tab-inactive');
+                    });
+                    this.classList.add('tab-active');
+                    this.classList.remove('tab-inactive');
+                    
+                    const targetId = this.getAttribute('data-tab');
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        function setupWorkflowAnimation() {
+            const steps = document.querySelectorAll('.workflow-step');
+            let currentStep = 0;
+            setInterval(() => {
+                steps.forEach(step => step.classList.remove('step-highlight'));
+                steps[currentStep].classList.add('step-highlight');
+                currentStep = (currentStep + 1) % steps.length;
+            }, 2000);
+        }
+
+        function renderResearchChart(researchData) {
+            const ctx = document.getElementById('researchChart').getContext('2d');
+            const labels = researchData.map(area => area.area);
+            const data = researchData.map(area => area.queries.length);
+            
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Research Queries',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(252, 211, 77, 0.6)', // Amber
+                            'rgba(125, 211, 252, 0.6)', // Sky
+                            'rgba(56, 189, 248, 0.6)',  // Blue
+                            'rgba(192, 132, 252, 0.6)'  // Purple
+                        ],
+                        borderColor: [
+                            'rgba(252, 211, 77, 1)',
+                            'rgba(125, 211, 252, 1)',
+                            'rgba(56, 189, 248, 1)',
+                            'rgba(192, 132, 252, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#4A4A4A',
+                            titleFont: { size: 14, weight: 'bold' },
+                            bodyFont: { size: 12 },
+                            padding: 10,
+                            cornerRadius: 4,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribution of Research Effort by Area',
+                            font: {
+                                size: 16,
+                                weight: '600'
+                            },
+                            color: '#4A4A4A',
+                            padding: {
+                                bottom: 20
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#E5E7EB'
+                            },
+                            ticks: {
+                                font: { size: 12 },
+                                color: '#6B7280'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: { size: 12, weight: '500' },
+                                color: '#4A4A4A',
+                                callback: function(value, index, values) {
+                                    const label = this.getLabelForValue(value);
+                                    if (label.length > 16) {
+                                        return label.slice(0, 16) + '...';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
